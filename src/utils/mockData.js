@@ -1,0 +1,73 @@
+export const productSeed = [
+  {
+    id: 'P-1001',
+    name: 'Industrial Drill',
+    sku: 'IDR-01',
+    category: 'Tools',
+    price: 199.99,
+    status: 'Active',
+    createdDate: '2026-03-12T09:00:00.000Z',
+  },
+  {
+    id: 'P-1002',
+    name: 'Safety Helmet',
+    sku: 'SHL-44',
+    category: 'Safety',
+    price: 34.5,
+    status: 'Active',
+    createdDate: '2026-03-14T10:15:00.000Z',
+  },
+  {
+    id: 'P-1003',
+    name: 'Forklift Battery',
+    sku: 'FLT-19',
+    category: 'Electronics',
+    price: 849.0,
+    status: 'Inactive',
+    createdDate: '2026-03-17T14:20:00.000Z',
+  },
+  {
+    id: 'P-1004',
+    name: 'Packing Tape',
+    sku: 'PCK-27',
+    category: 'Supplies',
+    price: 8.95,
+    status: 'Active',
+    createdDate: '2026-03-19T16:40:00.000Z',
+  },
+];
+
+export const inventorySeed = [
+  {
+    id: 'I-2001',
+    productId: 'P-1001',
+    availableQuantity: 72,
+    reservedQuantity: 5,
+    warehouseLocation: 'WH-A1',
+    lastUpdated: '2026-04-02T08:10:00.000Z',
+  },
+  {
+    id: 'I-2002',
+    productId: 'P-1002',
+    availableQuantity: 280,
+    reservedQuantity: 32,
+    warehouseLocation: 'WH-B4',
+    lastUpdated: '2026-04-02T09:00:00.000Z',
+  },
+  {
+    id: 'I-2003',
+    productId: 'P-1003',
+    availableQuantity: 18,
+    reservedQuantity: 2,
+    warehouseLocation: 'WH-C2',
+    lastUpdated: '2026-04-01T14:30:00.000Z',
+  },
+  {
+    id: 'I-2004',
+    productId: 'P-1004',
+    availableQuantity: 500,
+    reservedQuantity: 40,
+    warehouseLocation: 'WH-A3',
+    lastUpdated: '2026-04-03T07:45:00.000Z',
+  },
+];

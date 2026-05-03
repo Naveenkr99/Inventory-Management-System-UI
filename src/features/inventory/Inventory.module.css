@@ -1,0 +1,40 @@
+.page {
+  display: grid;
+  gap: 1rem;
+}
+
+.toolbar {
+  display: flex;
+  justify-content: flex-start;
+}
+
+.note {
+  margin: 0;
+  color: #64748b;
+}
+
+.error {
+  margin: 0;
+  color: #b91c1c;
+}
+
+.inlineInput {
+  width: 120px;
+  padding: 0.4rem 0.6rem;
+  border: 1px solid #cbd5e1;
+  border-radius: 8px;
+}
+
+.saveButton {
+  border: 1px solid #2563eb;
+  color: #2563eb;
+  background: #eff6ff;
+  border-radius: 8px;
+  padding: 0.45rem 0.8rem;
+}
+
+@media (max-width: 640px) {
+  .inlineInput {
+    width: 100px;
+  }
+}
