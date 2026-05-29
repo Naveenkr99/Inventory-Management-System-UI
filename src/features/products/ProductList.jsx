@@ -46,8 +46,8 @@ function ProductList() {
   const columns = useMemo(
     () => [
       { key: 'id', label: t('products.fields.id') },
-      { key: 'sku', label: t('products.fields.sku') },
       { key: 'name', label: t('products.fields.name') },
+      // { key: 'sku', label: t('products.fields.sku') },
       { key: 'description', label: t('products.fields.description') },
       { key: 'category', label: t('products.fields.category') },
       { key: 'price', label: t('products.fields.price'), render: (row) => formatCurrency(row.price, currentLocale) },

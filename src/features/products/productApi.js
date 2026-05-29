@@ -1,6 +1,7 @@
 import { apiClient } from '../../services/apiClient';
 
-const PRODUCTS_API_BASE_URL = 'http://localhost:8080';
+// const PRODUCTS_API_BASE_URL = 'http://localhost:8080';
+const PRODUCTS_API_BASE_URL='https://inventory-management-system-production-67a5.up.railway.app';
 const PRODUCTS_API_AUTH = 'Basic YWRtaW46Y2ZhYTA0Y2YtM2U3NS00MGIxLTgxNmQtOTlmNzE3MDM4Yjc0';
 
 const getProductHeaders = () => ({
@@ -62,7 +63,7 @@ export const getProductsApi = async (params = {}) => {
 export const createProductApi = (payload) =>
   apiClient.axiosClient.request({
     method: 'post',
-    url: '/api/products',
+    url: '/api/products/add',
     data: payload,
     baseURL: PRODUCTS_API_BASE_URL,
     headers: getProductHeaders(),

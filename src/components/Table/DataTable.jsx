@@ -2,7 +2,7 @@ import React from 'react';
 import styles from './DataTable.module.css';
 
 function DataTable({ columns, rows, emptyMessage = 'No records found.' }) {
-  if (!rows.length) {
+  if (!rows?.length) {
     return <div className={styles.emptyState}>{emptyMessage}</div>;
   }
 
