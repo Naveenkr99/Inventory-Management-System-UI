@@ -1,0 +1,85 @@
+.loginPage {
+  min-height: 100vh;
+  display: grid;
+  place-items: center;
+  background: #f8fafc;
+  padding: 1rem;
+}
+
+.loginCard {
+  width: min(520px, 100%);
+  background: #ffffff;
+  border: 1px solid #e5e7eb;
+  border-radius: 18px;
+  padding: 2rem;
+  box-shadow: 0 24px 48px rgba(15, 23, 42, 0.08);
+}
+
+.loginCard h1 {
+  margin: 0 0 0.5rem;
+  font-size: 1.75rem;
+}
+
+.loginCard p {
+  margin: 0 0 1.5rem;
+  color: #475569;
+}
+
+.loginForm {
+  display: grid;
+  gap: 1rem;
+}
+
+.radioLabel,
+.radioLabelSmall {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  color: #334155;
+}
+
+.radioLabelSmall {
+  margin-right: 1rem;
+}
+
+.switchRow {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+
+.loginForm input {
+  width: 100%;
+  padding: 0.85rem 1rem;
+  border: 1px solid #cbd5e1;
+  border-radius: 12px;
+  font-size: 1rem;
+}
+
+.loginButton {
+  background: #2563eb;
+  color: #ffffff;
+  border: none;
+  border-radius: 12px;
+  padding: 0.95rem 1.25rem;
+  font-size: 1rem;
+  cursor: pointer;
+}
+
+.loginError {
+  margin: 0;
+  padding: 0.5rem 0.75rem;
+  background: #fee2e2;
+  color: #b91c1c;
+  border-radius: 10px;
+}
+
+@media (max-width: 640px) {
+  .loginCard {
+    padding: 1.5rem;
+  }
+
+  .switchRow {
+    flex-direction: column;
+  }
+}

@@ -67,6 +67,127 @@
   padding: 0.45rem 0.8rem;
 }
 
+.customerMessage {
+  background: #eff6ff;
+  border: 1px solid #bfdbfe;
+  border-radius: 12px;
+  padding: 1rem;
+  color: #1d4ed8;
+}
+
+.cartWrapper {
+  border: 1px solid #e5e7eb;
+  border-radius: 12px;
+  padding: 1rem;
+  background: #ffffff;
+  display: grid;
+  gap: 1rem;
+}
+
+.cartHeader {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+}
+
+.cartEmpty {
+  margin: 0;
+  color: #475569;
+}
+
+.cartItems {
+  display: grid;
+  gap: 0.75rem;
+}
+
+.cartItem {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  padding: 0.85rem;
+  border: 1px solid #e5e7eb;
+  border-radius: 10px;
+}
+
+.cartActions {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.quantityControl {
+  display: flex;
+  align-items: center;
+  gap: 0.35rem;
+}
+
+.quantityControl button {
+  width: 2rem;
+  height: 2rem;
+  border: 1px solid #cbd5e1;
+  border-radius: 8px;
+  background: #f8fafc;
+  color: #0f172a;
+  cursor: pointer;
+}
+
+.quantityControl span {
+  min-width: 2rem;
+  text-align: center;
+}
+
+.cartRemoveButton {
+  border: 1px solid #ef4444;
+  background: #ef4444;
+  color: #ffffff;
+  padding: 0.55rem 0.9rem;
+  border-radius: 8px;
+  cursor: pointer;
+}
+
+.cartActions input {
+  width: 4rem;
+  padding: 0.4rem 0.5rem;
+  border: 1px solid #cbd5e1;
+  border-radius: 8px;
+}
+
+.cartButton,
+.cartCountButton,
+.placeOrderButton,
+.cartTopButton {
+  border: 1px solid #3b82f6;
+  background: #3b82f6;
+  color: #ffffff;
+  padding: 0.55rem 0.9rem;
+  border-radius: 8px;
+  cursor: pointer;
+}
+
+.cartCountButton {
+  min-width: 150px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.4rem;
+}
+
+.cartTopButton {
+  min-width: 140px;
+  font-weight: 600;
+}
+
+.placeOrderButton {
+  width: fit-content;
+}
+
+.orderMessage {
+  margin: 0;
+  color: #047857;
+}
+
 @media (max-width: 1000px) {
   .formGrid {
     grid-template-columns: repeat(2, minmax(0, 1fr));
