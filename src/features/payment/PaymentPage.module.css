@@ -1,0 +1,130 @@
+.page {
+  padding: 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 16px;
+  flex-wrap: wrap;
+}
+
+.summary {
+  font-weight: 600;
+}
+
+.paymentContainer {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 24px;
+}
+
+.methodSection,
+.orderSummary {
+  background: #ffffff;
+  border: 1px solid #e2e8f0;
+  border-radius: 12px;
+  padding: 20px;
+}
+
+.radioLabel {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 12px;
+  font-weight: 500;
+}
+
+.inputGroup {
+  margin-top: 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.inputGroup input {
+  border: 1px solid #cbd5e0;
+  border-radius: 8px;
+  padding: 10px 12px;
+  width: 100%;
+}
+
+.orderList {
+  list-style: none;
+  padding: 0;
+  margin: 0 0 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.orderItem {
+  display: flex;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 12px;
+  border: 1px solid #e2e8f0;
+  border-radius: 10px;
+}
+
+.totalAmount {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 16px 0;
+  border-top: 1px solid #e2e8f0;
+  margin-top: 12px;
+  font-size: 1rem;
+  font-weight: 600;
+}
+
+.confirmButton,
+.backButton {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  margin-top: 16px;
+  padding: 12px 16px;
+  border: none;
+  border-radius: 10px;
+  background: #2563eb;
+  color: #ffffff;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.confirmButton:hover,
+.backButton:hover {
+  background: #1d4ed8;
+}
+
+.statusMessage {
+  margin-top: 16px;
+  padding: 12px 14px;
+  border-radius: 10px;
+  background: #f8fafc;
+  border: 1px solid #cbd5e0;
+  color: #1f2937;
+}
+
+.emptyState {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  align-items: flex-start;
+  padding: 24px;
+  background: #ffffff;
+  border: 1px solid #e2e8f0;
+  border-radius: 12px;
+}
+
+@media (max-width: 900px) {
+  .paymentContainer {
+    grid-template-columns: 1fr;
+  }
+}

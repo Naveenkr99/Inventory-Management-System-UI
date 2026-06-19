@@ -1,9 +1,9 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useTranslation } from 'react-i18next';
+import { useNavigate } from 'react-router-dom';
 import { formatCurrency } from '../../utils/formatters';
 import {
-  clearCart,
   removeFromCart,
   updateCartQuantity,
 } from './cartSlice';
@@ -13,7 +13,7 @@ function CartPage() {
   const dispatch = useDispatch();
   const { t, i18n } = useTranslation();
   const cartItems = useSelector((state) => state.cart.items);
-  const [orderMessage, setOrderMessage] = useState('');
+  const navigate = useNavigate();
 
   const currentLocale = i18n.language === 'hi' ? 'hi-IN' : 'en-US';
   const cartTotal = cartItems.reduce((total, item) => total + (item.price || 0) * item.quantity, 0);
@@ -26,11 +26,9 @@ function CartPage() {
     }
   };
 
-  const handlePlaceOrder = () => {
+  const handleProceedToPayment = () => {
     if (!cartItems.length) return;
-    dispatch(clearCart());
-    setOrderMessage(t('cart.orderSuccess'));
-    setTimeout(() => setOrderMessage(''), 3000);
+    navigate('/payment');
   };
 
   return (
@@ -72,11 +70,10 @@ function CartPage() {
       )}
 
       <div className={styles.actions}>
-        <button type="button" className={styles.placeOrderButton} disabled={cartItems.length === 0} onClick={handlePlaceOrder}>
-          {t('cart.placeOrder')}
+        <button type="button" className={styles.placeOrderButton} disabled={cartItems.length === 0} onClick={handleProceedToPayment}>
+          {t('cart.proceedToPayment')}
         </button>
       </div>
-      {orderMessage && <p className={styles.orderMessage}>{orderMessage}</p>}
     </section>
   );
 }

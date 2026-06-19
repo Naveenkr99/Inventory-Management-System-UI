@@ -135,7 +135,7 @@ function ProductList() {
         },
       },
     ],
-    [cartItems, currentLocale, handleAddToCart, t]
+    [cartItems, currentLocale, handleAddToCart, handleQuantityChange, t]
   );
 
   const columns = role === 'admin' ? adminColumns : customerColumns;

@@ -3,6 +3,7 @@ import { inventorySeed, productSeed } from '../utils/mockData';
 const db = {
   products: [...productSeed],
   inventory: [...inventorySeed],
+  orders: [],
 };
 
 const wait = (ms) => new Promise((resolve) => setTimeout(resolve, ms));
@@ -108,6 +109,23 @@ export const mockServerRequest = async (config) => {
   if (method === 'get' && url === '/api/inventory') {
     const filtered = applyInventoryFilters(db.inventory, params.search);
     return makeResponse(200, withInventoryProductName(filtered));
+  }
+
+  if (method === 'post' && url === '/api/orders') {
+    const items = Array.isArray(payload.items) ? payload.items : [];
+    const normalizedItems = items.map((item) => ({
+      productId: item.productId,
+      quantity: Number(item.quantity) || 0,
+      locationId: item.locationId || 1111,
+    }));
+    const order = {
+      id: `O-${Math.floor(1000 + Math.random() * 9000)}`,
+      items: normalizedItems,
+      status: 'CONFIRMED',
+      createdAt: new Date().toISOString(),
+    };
+    db.orders.push(order);
+    return makeResponse(201, order);
   }
 
   if (method === 'put' && url.startsWith('/api/inventory/')) {
