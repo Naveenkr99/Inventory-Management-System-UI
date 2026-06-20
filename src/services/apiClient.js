@@ -5,7 +5,27 @@ const baseClient = axios.create({
   timeout: 5000,
 });
 
-baseClient.interceptors.request.use((config) => config);
+baseClient.interceptors.request.use((config) => {
+  config.headers = config.headers || {};
+  try {
+    const token = localStorage.getItem('token');
+    if (token) {
+      config.headers.Authorization = `Bearer ${token}`;
+    }
+  } catch (e) {
+    // ignore localStorage errors in non-browser environments
+  }
+  return config;
+});
+
+export function setAuthToken(token) {
+  if (token) {
+    baseClient.defaults.headers.common['Authorization'] = `Bearer ${token}`;
+  } else {
+    delete baseClient.defaults.headers.common['Authorization'];
+  }
+}
+
 baseClient.interceptors.response.use(
   (response) => response,
   (error) => Promise.reject(error)

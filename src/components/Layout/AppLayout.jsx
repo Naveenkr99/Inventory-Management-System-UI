@@ -8,6 +8,7 @@ import styles from './AppLayout.module.css';
 function AppLayout() {
   const dispatch = useDispatch();
   const role = useSelector((state) => state.auth.role);
+  const userId = useSelector((state) => state.auth.user?.id);
   const { t, i18n } = useTranslation();
 
   return (
@@ -33,10 +34,10 @@ function AppLayout() {
               {t('nav.inventory')}
             </NavLink>
           )}
-          {role === 'customer' && (
+          {role === 'customer' && userId && (
             <>
               <NavLink
-                to="/users/1"
+                to={`/users/${userId}`}
                 className={({ isActive }) =>
                   isActive ? `${styles.link} ${styles.active}` : styles.link
                 }

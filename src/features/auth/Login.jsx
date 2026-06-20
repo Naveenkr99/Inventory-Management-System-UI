@@ -1,8 +1,10 @@
-import React, { useState } from 'react';
+import React, { useCallback, useEffect, useRef, useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 import { loginSuccess } from './authSlice';
+import { loginWithGoogle } from '../../services/authApi';
+import { setAuthToken } from '../../services/apiClient';
 import styles from './Login.module.css';
 
 const adminCredentials = {
@@ -21,6 +23,9 @@ function Login() {
   const [adminId, setAdminId] = useState('');
   const [adminPassword, setAdminPassword] = useState('');
   const [error, setError] = useState('');
+  const [googleError, setGoogleError] = useState('');
+  const googleButtonRef = useRef(null);
+  const googleInitializedRef = useRef(false);
 
   const validateCustomer = () => {
     if (customerMethod === 'mobile') {
@@ -28,6 +33,68 @@ function Login() {
     }
     return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email.trim());
   };
+
+  const handleGoogleCallback = useCallback(async (response) => {
+    setError('');
+    setGoogleError('');
+
+    if (!response?.credential) {
+      setGoogleError(t('auth.googleLoginError'));
+      return;
+    }
+
+    try {
+      const result = await loginWithGoogle(response.credential);
+      if (result?.token) {
+        localStorage.setItem('token', result.token);
+        setAuthToken(result.token);
+      }
+      dispatch(
+        loginSuccess({
+          role: result.role || 'customer',
+          userType: 'customer',
+          user: result.user,
+          token: result.token,
+        })
+      );
+      navigate('/products');
+    } catch (googleSignInError) {
+      setGoogleError(googleSignInError.message || t('auth.googleLoginError'));
+    }
+  }, [dispatch, navigate, t]);
+
+  useEffect(() => {
+    const initializeGoogle = () => {
+      if (!window.google || googleInitializedRef.current) {
+        return;
+      }
+
+      window.google.accounts.id.initialize({
+        client_id: process.env.REACT_APP_GOOGLE_CLIENT_ID || 'YOUR_GOOGLE_CLIENT_ID',
+        callback: handleGoogleCallback,
+      });
+      window.google.accounts.id.renderButton(googleButtonRef.current, {
+        theme: 'outline',
+        size: 'large',
+        width: 280,
+      });
+      googleInitializedRef.current = true;
+    };
+
+    if (window.google) {
+      initializeGoogle();
+      return undefined;
+    }
+
+    const poller = window.setInterval(() => {
+      if (window.google) {
+        initializeGoogle();
+        window.clearInterval(poller);
+      }
+    }, 300);
+
+    return () => window.clearInterval(poller);
+  }, [handleGoogleCallback]);
 
   const handleSubmit = (event) => {
     event.preventDefault();
@@ -138,6 +205,10 @@ function Login() {
             {t('auth.login')}
           </button>
         </form>
+        <div className={styles.googleSignInSection}>
+          <div ref={googleButtonRef} id="google-signin-button" />
+          {googleError && <p className={styles.loginError}>{googleError}</p>}
+        </div>
       </div>
     </div>
   );

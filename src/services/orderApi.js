@@ -10,9 +10,13 @@ const getProductHeaders = () => ({
 
 const DEFAULT_LOCATION_ID = 111;
 
-export const createOrder = async (orderItems) => {
+export const createOrder = async (orderItems, userId) => {
+  if (!userId) {
+    throw new Error('Unable to create order: missing user ID.');
+  }
+
   const payload = {
-    userId:1,
+    userId,
     items: orderItems.map((item) => ({
       productId: item.productId,
       quantity: item.quantity,

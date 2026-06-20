@@ -12,6 +12,7 @@ function PaymentPage() {
   const navigate = useNavigate();
   const { t, i18n } = useTranslation();
   const cartItems = useSelector((state) => state.cart.items);
+  const userId = useSelector((state) => state.auth.user?.id);
 
   const [paymentMethod, setPaymentMethod] = useState('cod');
   const [upiId, setUpiId] = useState('');
@@ -39,7 +40,7 @@ function PaymentPage() {
         locationId: 111,
       }));
 
-      const order = await createOrder(orderItems);
+      const order = await createOrder(orderItems, userId);
       dispatch(clearCart());
       setStatusMessage(
         paymentMethod === 'cod'
