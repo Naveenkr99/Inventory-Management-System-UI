@@ -5,6 +5,7 @@ import ProductList from '../features/products/ProductList';
 import InventoryList from '../features/inventory/InventoryList';
 import CartPage from '../features/cart/CartPage';
 import PaymentPage from '../features/payment/PaymentPage';
+import UserDetails from '../features/user/UserDetails';
 import Login from '../features/auth/Login';
 import AppLayout from '../components/Layout/AppLayout';
 
@@ -55,6 +56,10 @@ function AppRoutes() {
               <Navigate to="/login" replace />
             )
           }
+        />
+        <Route
+          path="/users/:id"
+          element={isAuthenticated ? <UserDetails /> : <Navigate to="/login" replace />}
         />
       </Route>
 

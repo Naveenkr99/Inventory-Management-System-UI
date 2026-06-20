@@ -1,0 +1,123 @@
+.page {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.loading,
+.error,
+.emptyState {
+  padding: 24px;
+  border-radius: 12px;
+  background: #f8f9fb;
+  color: #333;
+  font-size: 1rem;
+}
+
+.userCard,
+.orderCard {
+  border: 1px solid #e1e5ea;
+  border-radius: 14px;
+  padding: 24px;
+  background: #ffffff;
+}
+
+.headerRow {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin-bottom: 20px;
+}
+
+.subTitle {
+  color: #64748b;
+  font-size: 0.95rem;
+}
+
+.userInfo {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 16px;
+}
+
+.userField {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  background: #f8fafc;
+  border-radius: 10px;
+  padding: 16px;
+}
+
+.userField span {
+  color: #64748b;
+  font-size: 0.85rem;
+}
+
+.userField strong {
+  font-size: 1rem;
+  color: #0f172a;
+}
+
+.ordersSection {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}
+
+.sectionHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 16px;
+}
+
+.orderHeader,
+.orderMeta {
+  display: flex;
+  justify-content: space-between;
+  gap: 12px;
+  margin-bottom: 16px;
+  flex-wrap: wrap;
+}
+
+.itemsTable {
+  border-top: 1px solid #e2e8f0;
+  padding-top: 14px;
+}
+
+.itemsHeader,
+.itemRow {
+  display: grid;
+  grid-template-columns: 2fr 1fr 1fr 1fr 1.5fr;
+  gap: 12px;
+  align-items: center;
+  padding: 8px 0;
+}
+
+.itemsHeader {
+  color: #475569;
+  font-weight: 700;
+  text-transform: uppercase;
+  font-size: 0.85rem;
+  border-bottom: 1px solid #e2e8f0;
+}
+
+.itemRow {
+  border-bottom: 1px solid #f1f5f9;
+}
+
+.itemLocation {
+  margin-top: 16px;
+  padding: 16px;
+  background: #f8fafc;
+  border-radius: 10px;
+  display: grid;
+  gap: 8px;
+}
+
+.locationTitle {
+  font-weight: 700;
+  color: #334155;
+  margin-bottom: 4px;
+}

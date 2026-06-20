@@ -34,14 +34,24 @@ function AppLayout() {
             </NavLink>
           )}
           {role === 'customer' && (
-            <NavLink
-              to="/cart"
-              className={({ isActive }) =>
-                isActive ? `${styles.link} ${styles.active}` : styles.link
-              }
-            >
-              {t('nav.cart')}
-            </NavLink>
+            <>
+              <NavLink
+                to="/users/1"
+                className={({ isActive }) =>
+                  isActive ? `${styles.link} ${styles.active}` : styles.link
+                }
+              >
+                {t('nav.userDetails')}
+              </NavLink>
+              <NavLink
+                to="/cart"
+                className={({ isActive }) =>
+                  isActive ? `${styles.link} ${styles.active}` : styles.link
+                }
+              >
+                {t('nav.cart')}
+              </NavLink>
+            </>
           )}
         </nav>
       </aside>
